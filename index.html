@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#06111f">
+  <title>StoTen Compare – porovnanie poťahov a driev</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="https://www.stoten.sk/" target="_blank" rel="noopener">
+      <span class="brand-mark">S</span><span><b>STOTEN</b><small>.SK</small></span>
+    </a>
+    <div class="headline"><h1>STOTEN <em>COMPARE</em></h1><p>Moderné porovnanie poťahov a driev</p></div>
+    <div class="counter"><span>Vybrané</span><b id="selectedCount">0 / 5</b></div>
+  </header>
+
+  <main class="shell">
+    <section class="mode-row">
+      <div class="tabs" role="tablist" aria-label="Typ porovnania">
+        <button class="tab active" data-type="rubber" role="tab">Poťahy</button>
+        <button class="tab" data-type="blade" role="tab">Drevá</button>
+      </div>
+      <p class="mode-hint">Vyberte 2 až 5 produktov. Poťahy a drevá sa porovnávajú samostatne.</p>
+      <button id="shareBtn" class="icon-button" title="Kopírovať odkaz na porovnanie" aria-label="Kopírovať odkaz">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.15 1.15M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.15-1.15"/></svg>
+      </button>
+    </section>
+
+    <section id="selectionArea" class="selection-area" aria-live="polite"></section>
+
+    <section class="panel ranking-panel">
+      <div class="panel-title">
+        <span class="title-icon scales-icon">⚖</span>
+        <div><p>VÝKONNOSTNÝ PREHĽAD</p><h2>Ranking vybraných produktov</h2></div>
+        <span class="title-icon chart-icon">▥</span>
+      </div>
+      <div id="rankingChart" class="ranking-chart"></div>
+      <p class="fineprint">Index je orientačný priemer dostupných technických hodnôt. Nehodnotí, či je produkt vhodný práve pre váš herný štýl.</p>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="panel-heading"><h2>Detailné porovnanie</h2><span id="bestLegend">Najvyššia hodnota je zvýraznená</span></div>
+      <div id="comparisonTable" class="compare-table-wrap"></div>
+    </section>
+
+    <section class="panel guide-panel">
+      <div><span class="eyebrow">AKO TO FUNGUJE</span><h2>Od detailu produktu k porovnaniu jedným kliknutím</h2></div>
+      <div class="steps">
+        <div><b>1</b><span>Na detaile poťahu alebo dreva kliknite na <strong>Porovnať produkt</strong>.</span></div>
+        <div><b>2</b><span>Produkt sa automaticky vloží na túto stránku.</span></div>
+        <div><b>3</b><span>Pridajte ďalšie produkty a porovnajte parametre, cenu aj dostupnosť.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="picker" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+      <div class="modal-head"><div><span class="eyebrow">PRIDAŤ PRODUKT</span><h2 id="pickerTitle">Vyberte produkt</h2></div><button class="close-button" data-close aria-label="Zavrieť">×</button></div>
+      <div class="search-row">
+        <label class="searchbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="searchInput" type="search" placeholder="Názov alebo značka…" autocomplete="off"></label>
+        <label class="offer-toggle"><input id="offerOnly" type="checkbox" checked><span></span>Len v ponuke StoTen</label>
+      </div>
+      <div id="pickerResults" class="picker-results"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script>window.STOTEN_PUBLIC_COMPARE_URL="https://www.stoten.sk/porovnavac/";</script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="embed-bridge.js"></script>
+</body>
+</html>
